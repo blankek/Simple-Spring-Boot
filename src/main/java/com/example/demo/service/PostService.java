@@ -3,21 +3,19 @@ package com.example.demo.service;
 import com.example.demo.model.Post;
 import org.springframework.stereotype.Service;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class PostService {
+    List<Post> posts = new ArrayList<>();
     public List<Post> listAllPosts(){
-        Post first = new Post("Первый элемент",new Date(), 15);
-        Post second = new Post("Второй элемент",new Date(), 10);
-        Post third = new Post("Третий элемент",new Date(), 12);
+        return posts;
+    }
 
-        List<Post> list = new ArrayList<>();
-        list.add(first);
-        list.add(second);
-        list.add(third);
-        return list;
+    public void create(String text){
+        posts.add(new Post(text, new Date()));
     }
 }
