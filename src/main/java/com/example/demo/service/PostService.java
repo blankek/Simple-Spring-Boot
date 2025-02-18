@@ -15,7 +15,8 @@ public class PostService {
         return posts;
     }
 
-    public void create(String text){
-        posts.add(new Post(text, new Date()));
+    public void create(String text ){
+        Long id =(long) posts.size();
+        posts.add(new Post(id ,text, new Date(), 0));
     }
 }
