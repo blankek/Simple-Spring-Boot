@@ -1,20 +1,32 @@
 package com.example.demo.model;
 
 import javax.xml.crypto.Data;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class Post {
+@Entity
+public class Post implements Serializable {
+    @Id
+    @GeneratedValue
+    private Long id;
     private String text;
     private Integer likes;
     private Date creationDate;
-    private Long id;
 
-    public Post(Long id,String text, Date creationDate, Integer likes){
+
+    public Post(Long id,String text, Date creationDate){
         this.id = id;
         this.text = text;
         this.creationDate = creationDate;
-        this.likes = likes;
+        this.likes = 0;
     }
+    public Post() {
+    }
+
 
     public Integer getLikes() {
         return likes;

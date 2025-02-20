@@ -7,20 +7,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class PostCreateController {
+public class PostsCreateController {
+
     @Autowired
-    PostService postService;
+    private PostService postsService;
 
     @RequestMapping(path = "/new", method = RequestMethod.GET)
-    public String create() {
+    public String create(Model model) {
+        model.addAttribute("appName", "Добавить пост в приложение");
         return "create";
     }
 
     @RequestMapping(path = "/new", method = RequestMethod.POST)
     public String doCreate(@ModelAttribute("text") String text) {
-        postService.create(text);
+        postsService.create(text);
         return "redirect:/";
     }
 }
